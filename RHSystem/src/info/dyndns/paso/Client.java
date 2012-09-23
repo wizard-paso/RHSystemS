@@ -86,7 +86,7 @@ class Client implements Runnable, MessageListener {
 		} catch (IOException e) {
 			// err.printStackTrace();
 			System.out.println("通信エラー" + socket.getInetAddress());
-		} catch (JSONException e) {// jsonのエラーもはくはず｡その場合は切断すべし｡
+		} catch (JSONException e) {// jsonのエラーもはくはず｡その場合は躊躇なく切断すべし｡
 			System.out.println("JSONエラー" + socket.getInetAddress());
 		} catch (Exception e) {
 			System.out.println("エラー" + socket.getInetAddress());
@@ -189,7 +189,7 @@ class Client implements Runnable, MessageListener {
 	}
 
 	// JSONを
-	private void sendMessageEvent(JSONObject json) {
+	public void sendMessageEvent(JSONObject json) {
 		MessageEvent event = new MessageEvent(this, json);
 		for (MessageListener l : messageListeners) { // messageListenersから各MessageListenerを取得、それぞれに対して処理
 			l.messageThrow(event); // ユーザが所属しているルームなどの区切りへ全て配信　所属の数=Listenerの数

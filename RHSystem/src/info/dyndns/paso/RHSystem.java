@@ -15,10 +15,11 @@ import java.io.*;
 public class RHSystem {
 	public static void main(String[] args) {
 		RHSystem application = RHSystem.getInstance();
+		
 		application.start();
 	}
 
-	// サーバーはシングルトン設計。唯一のインスタンス
+	// サーバーはシングルトン設計。
 	private static RHSystem instance;
 
 	public static RHSystem getInstance() {
@@ -36,6 +37,7 @@ public class RHSystem {
 
 	private RHSystem() {
 		userList = new ArrayList<Client>();
+		Admin admin=Admin.getInstance(this);
 	}
 
 	// main メソッドから呼び出される
